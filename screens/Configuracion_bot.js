@@ -5,14 +5,14 @@ import firebase from 'firebase/app';
 import "firebase/auth";
 import { isEnabled } from 'react-native/Libraries/Performance/Systrace';
 import { isDisabled } from 'react-native/Libraries/LogBox/Data/LogBoxData';
-
 export default function Configuracion_botScreen({ navigation}) {
 
 const styles = StyleSheet.create({
     view: {
         width: '100%',
         height: '100%',
-        flex: 1,    
+        flex: 1,
+     
         
     },
     fondo:{
@@ -167,6 +167,9 @@ const styles = StyleSheet.create({
      const [isEnabled, setIsEnabled ] = useState(false);
      const toggleSwitch = () =>{ setIsEnabled(!isEnabled);}
      
+      
+    
+
     
     
     return (
@@ -198,7 +201,7 @@ const styles = StyleSheet.create({
                         <Text style={styles.textcantidad}>CANTIDAD</Text> 
                     </View >
                     <View style={[styles.contenidoR1 ,{ backgroundColor:isEnabled?"rgba(77, 26, 112, 0.3)" : "#4D1A70" } ]}   >
-                        <TextInput color="white" placeholder={isEnabled?"" :"$ $ $"} placeholderTextColor="#fff" editable={!isEnabled}/>
+                        <TextInput color="white" placeholder={isEnabled?"" :"$ $ $"} placeholderTextColor="#fff" editable={!isEnabled} keyboardType="numeric"/>
                     </View>
 
                 </View>
@@ -208,7 +211,7 @@ const styles = StyleSheet.create({
                         <Text style={styles.textcantidad}>PROFIT</Text> 
                     </View>
                     <View style={[styles.contenidoR2 , { backgroundColor:isEnabled?"rgba(77, 26, 112, 0.3)" : "#4D1A70" }]}>
-                        <TextInput  color="white" placeholder={isEnabled? "":"% % %"} placeholderTextColor="#fff" editable={!isEnabled}/>
+                        <TextInput  color="white" placeholder={isEnabled? "":"% % %"} placeholderTextColor="#fff" editable={!isEnabled} keyboardType="numeric"/>
                     </View>
 
                 </View>      
@@ -218,14 +221,14 @@ const styles = StyleSheet.create({
                         <Text style={styles.textcantidad}>PISOS</Text> 
                     </View>
                     <View style={[styles.contenidoR3 ,{ backgroundColor:isEnabled?"rgba(77, 26, 112, 0.3)" : "#4D1A70" }]}>
-                        <TextInput  color="white"placeholder={isEnabled? "":"# # #"} placeholderTextColor="#fff" editable={!isEnabled} />
+                        <TextInput  color="white"placeholder={isEnabled? "":"# # #"} placeholderTextColor="#fff" editable={!isEnabled} keyboardType="numeric" />
                     </View>
 
                 </View>
 
                  <View>
 
-                    <TouchableOpacity style={[styles.btn_configurar,{ backgroundColor:isEnabled?"rgba(77, 26, 112, 0.3)" : "#4D1A70" }]} disabled={isEnabled}>
+                    <TouchableOpacity style={[styles.btn_configurar,{ backgroundColor:isEnabled?"rgba(77, 26, 112, 0.3)" : "#4D1A70" }]} disabled={isEnabled} onPress={() => navigation.navigate("Pisos")}>
                         <Text style={[styles.txtbtn_configurar,{color:isEnabled? "rgba(250, 183, 0, 0.28)" : "#FBBA00"}]}>CONFIGURAR</Text>
                     </TouchableOpacity>
                     
@@ -236,7 +239,7 @@ const styles = StyleSheet.create({
                 <View>
 
                     <TouchableOpacity style={styles.btn_finalizar}>
-                        <Text style={styles.txtbtn_finalizar}>FINALIZAR</Text>
+                        <Text style={styles.txtbtn_finalizar}>INICIAR</Text>
                     </TouchableOpacity>
                     
                     

@@ -3,13 +3,14 @@ import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import IndexScreen from "./screens/Index"
-import InicioScreen from "./screens/Inicio"
-import LoginScreen from "./screens/Login"
-import SignUpScreen from "./screens/SignUp"
-import HomeScreen from "./screens/Home"
-import ApiScreen from "./screens/Api"
-import Configuracion_botScreen from "./screens/Configuracion_bot"
+import IndexScreen from "./screens/Index";
+import InicioScreen from "./screens/Inicio";
+import LoginScreen from "./screens/Login";
+import SignUpScreen from "./screens/SignUp";
+import HomeScreen from "./screens/Home";
+import ApiScreen from "./screens/Api";
+import PisosScreen from './screens/Pisos';
+import Configuracion_botScreen from "./screens/Configuracion_bot";
 import firebase from 'firebase/app'; 
 import "firebase/firestore";     
 import "firebase/auth";
@@ -57,9 +58,10 @@ function App() {
                         <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
                         <Stack.Screen name="Api" component={ApiScreen} options={{ headerShown: false }} />
                         <Stack.Screen name="Configuracion_bot" component={Configuracion_botScreen} options={{ headerShown: false }} />
+                        <Stack.Screen name = "Pisos" component ={PisosScreen} options={{headerShown:false}}/>  
                     </Stack.Navigator>: 
                     <Stack.Navigator>
-                         
+                        
                         <Stack.Screen name = "Index" component ={IndexScreen} options={{headerShown:false}}/>
                         <Stack.Screen name = "Inicio" component ={InicioScreen} options={{headerShown:false}}/>
                         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />

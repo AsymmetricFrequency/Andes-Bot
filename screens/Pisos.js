@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         marginTop:"10%",
         marginLeft:"5%",
-        marginRight:"5%"
+        marginRight:"6%"
     },
 
     pisosL:{
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         backgroundColor:"#4D1A70",
         borderRadius: 10,
         marginRight:"1%",
-        marginLeft:"2%",
+        marginLeft:"1%",
         alignItems:'center',
         
     },
@@ -101,35 +101,38 @@ const styles = StyleSheet.create({
         <View style={styles.view}>
             <ImageBackground source={require('../Img/fondo_config_bot.png')} style={styles.fondo}>
                     <Text style={styles.txtconf}>CONFIGURACION PISOS</Text>
+                 
                 <View style={styles.titulo}>
-                <View style={styles.tituloL}>
-                        <Text style={styles.txtconf}></Text>  
-                    </View>          
-                    <View style={styles.tituloC}>
-                        <Text style={styles.txtconf}>Porcentaje</Text>  
-                    </View>                    
-                    <View style={styles.tituloR}>
-                        <Text style={styles.txtconf}>Replica</Text> 
-                    </View>
+                    <View style={styles.tituloL}>
+                            <Text style={styles.txtconf}></Text>  
+                        </View>
+                                
+                        <View style={styles.tituloC}>
+                            <Text style={styles.txtconf}>Porcentaje</Text>  
+                        </View>                    
+                        <View style={styles.tituloR}>
+                            <Text style={styles.txtconf}>Replica</Text> 
+                        </View>
                 </View> 
-                <View>
-                    {inputs.map((inp,index) => {
-                        return  <View style={styles.pisos}>
-                                        <View key={index.toString()} style={styles.pisosL}>
-                                            <Text style={styles.txtconf}>Piso {index +1}</Text> 
+                <ScrollView>
+                        <View>
+                            {inputs.map((inp,index) => {
+                                return  <View style={styles.pisos}>
+                                                <View key={index.toString()} style={styles.pisosL}>
+                                                    <Text style={styles.txtconf}>Piso {index +1}</Text> 
+                                                </View>
+                                                <View style={styles.pisosC}>
+                                                    <TextInput  color="white" placeholder = "% % %" placeholderTextColor="#fff"  keyboardType="numeric" />
+                                                </View>
+                                                <View style={styles.pisosR}>
+                                                    <TextInput  color="white" placeholder = "# # #" placeholderTextColor="#fff"  keyboardType="numeric" />
+                                                </View>
+                        
                                         </View>
-                                        <View style={styles.pisosC}>
-                                            <TextInput  color="white" placeholder = "% % %" placeholderTextColor="#fff"  keyboardType="numeric" />
-                                        </View>
-                                        <View style={styles.pisosR}>
-                                            <TextInput  color="white" placeholder = "# # #" placeholderTextColor="#fff"  keyboardType="numeric" />
-                                        </View>
-                
-                                </View>
-                                } )}
-                   
-                </View>     
-
+                                        } )}
+                        
+                        </View>     
+                </ScrollView>                      
             </ImageBackground>
 
         </View>

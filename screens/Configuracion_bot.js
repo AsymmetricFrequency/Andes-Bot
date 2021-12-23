@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
-import { Text, View, StyleSheet, ImageBackground,Image,TouchableOpacity, Switch ,TextInput } from "react-native"
-import * as Animatable from 'react-native-animatable';
-import firebase from 'firebase/app';
+import { Text, View, StyleSheet, ImageBackground,TouchableOpacity, Switch ,TextInput } from "react-native"
 import "firebase/auth";
-import { isEnabled } from 'react-native/Libraries/Performance/Systrace';
-import { isDisabled } from 'react-native/Libraries/LogBox/Data/LogBoxData';
+
 export default function Configuracion_botScreen({ navigation}) {
 
 const styles = StyleSheet.create({
@@ -159,19 +156,30 @@ const styles = StyleSheet.create({
         
     }
 
-    
- 
 })
      
 
-     const [isEnabled, setIsEnabled ] = useState(false);
-     const toggleSwitch = () =>{ setIsEnabled(!isEnabled);}
+    const [isEnabled, setIsEnabled ] = useState(false);
+    const toggleSwitch = () =>{ setIsEnabled(!isEnabled);}
      
-      
-    
+    const [datos, setPisos] = useState({
+        cant_pisos: ''
+    })  
 
+    function handleInputChange(text, event) {
+        setPisos(prev => {
+            return {
+                ...prev,
+                [event]: text
+            }
+        })
+    }
     
-    
+    const enviarDatos = () => {
+        cant_pisos = datos.cant_pisos
+        navigation.navigate("Pisos",cant_pisos)   
+    }
+
     return (
         <View style={styles.view}>
             <ImageBackground source={require('../Img/fondo_config_bot.png')} style={styles.fondo}>
@@ -201,7 +209,13 @@ const styles = StyleSheet.create({
                         <Text style={styles.textcantidad}>CANTIDAD</Text> 
                     </View >
                     <View style={[styles.contenidoR1 ,{ backgroundColor:isEnabled?"rgba(77, 26, 112, 0.3)" : "#4D1A70" } ]}   >
-                        <TextInput color="white" placeholder={isEnabled?"" :"$ $ $"} placeholderTextColor="#fff" editable={!isEnabled} keyboardType="numeric"/>
+                        <TextInput 
+                            color="white" 
+                            placeholder={isEnabled?"" :"$ $ $"} 
+                            placeholderTextColor="#fff" 
+                            editable={!isEnabled} 
+                            keyboardType="numeric"
+                        />
                     </View>
 
                 </View>
@@ -211,42 +225,46 @@ const styles = StyleSheet.create({
                         <Text style={styles.textcantidad}>PROFIT</Text> 
                     </View>
                     <View style={[styles.contenidoR2 , { backgroundColor:isEnabled?"rgba(77, 26, 112, 0.3)" : "#4D1A70" }]}>
-                        <TextInput  color="white" placeholder={isEnabled? "":"% % %"} placeholderTextColor="#fff" editable={!isEnabled} keyboardType="numeric"/>
+                        <TextInput  
+                            color="white" placeholder={isEnabled? "":"% % %"} 
+                            placeholderTextColor="#fff" 
+                            editable={!isEnabled} 
+                            keyboardType="numeric"
+                        />
                     </View>
 
                 </View>      
-
+                
                 <View style={styles.contes3}>
                     <View style={styles.contenidoL}>
                         <Text style={styles.textcantidad}>PISOS</Text> 
                     </View>
                     <View style={[styles.contenidoR3 ,{ backgroundColor:isEnabled?"rgba(77, 26, 112, 0.3)" : "#4D1A70" }]}>
-                        <TextInput  color="white"placeholder={isEnabled? "":"# # #"} placeholderTextColor="#fff" editable={!isEnabled} keyboardType="numeric" />
+                        <TextInput 
+                            color="white"
+                            placeholder={isEnabled? "":"# # #"} 
+                            placeholderTextColor="#fff" 
+                            editable={!isEnabled} 
+                            keyboardType="numeric" 
+                            onChangeText={text => handleInputChange(text, "cant_pisos")}
+                        />
                     </View>
 
                 </View>
+                <View>
 
-                 <View>
-
-                    <TouchableOpacity style={[styles.btn_configurar,{ backgroundColor:isEnabled?"rgba(77, 26, 112, 0.3)" : "#4D1A70" }]} disabled={isEnabled} onPress={() => navigation.navigate("Pisos")}>
+                    <TouchableOpacity style={[styles.btn_configurar,{ backgroundColor:isEnabled?"rgba(77, 26, 112, 0.3)" : "#4D1A70" }]} disabled={isEnabled} onPress={() => enviarDatos()}>
                         <Text style={[styles.txtbtn_configurar,{color:isEnabled? "rgba(250, 183, 0, 0.28)" : "#FBBA00"}]}>CONFIGURAR</Text>
-                    </TouchableOpacity>
-                    
-                    
+                    </TouchableOpacity>    
                 </View>  
-
                 
                 <View>
 
                     <TouchableOpacity style={styles.btn_finalizar}>
                         <Text style={styles.txtbtn_finalizar}>INICIAR</Text>
                     </TouchableOpacity>
-                    
-                    
-                </View>   
-                          
-
-               
+                                
+                </View>    
 
             </ImageBackground>
 

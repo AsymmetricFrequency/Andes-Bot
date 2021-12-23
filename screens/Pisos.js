@@ -1,25 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Text, View, StyleSheet, ImageBackground,Image,TouchableOpacity, Switch ,TextInput,ScrollView } from "react-native"
-import * as Animatable from 'react-native-animatable';
-import firebase from 'firebase/app';
 import "firebase/auth";
-import { isEnabled } from 'react-native/Libraries/Performance/Systrace';
-import { isDisabled } from 'react-native/Libraries/LogBox/Data/LogBoxData';
-import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
+export default function PisosScreen() {
 
+const inputs = Array(parseInt(cant_pisos)).fill()
 
-
-export default function PisosScreen({ navigation}) {
-
-const inputs = Array(5).fill([''])
 const styles = StyleSheet.create({
+
     view: {
         width: '100%',
         height: '100%',
-        flex: 1,
-     
-        
+        flex: 1,  
     },
     fondo:{
 
@@ -106,8 +98,6 @@ const styles = StyleSheet.create({
      
     
     return (
-
-        
         <View style={styles.view}>
             <ImageBackground source={require('../Img/fondo_config_bot.png')} style={styles.fondo}>
                     <Text style={styles.txtconf}>CONFIGURACION PISOS</Text>
@@ -137,7 +127,6 @@ const styles = StyleSheet.create({
                 
                                 </View>
                                 } )}
-
                    
                 </View>     
 

@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     
 })
 
-export default function LoginScreen({ navigation }) {
+export default function LoginScreen() {
 
     const [values, setValues] = useState({
         email: "",
@@ -83,7 +83,7 @@ export default function LoginScreen({ navigation }) {
     function Login() {
 
         const { email, pwd } = values
-        const UID = firebase.auth().signInWithEmailAndPassword(email, pwd)
+        firebase.auth().signInWithEmailAndPassword(email, pwd)
         
         
         
@@ -119,6 +119,9 @@ export default function LoginScreen({ navigation }) {
                     <Text style={styles.text_login}>ACCESO</Text>
                 </TouchableOpacity>
                 
+            </View>
+            <View>
+                <Text></Text>
             </View>
             <View style={styles.develop}>
                 <Text style={{color:"#FBBA00",fontSize: 10,fontWeight: "700",}}>DEVELOPED BY CONDOR COIN</Text>

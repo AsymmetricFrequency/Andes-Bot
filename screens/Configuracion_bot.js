@@ -260,7 +260,7 @@ const styles = StyleSheet.create({
                 
                 <View>
 
-                    <TouchableOpacity style={styles.btn_finalizar}>
+                    <TouchableOpacity style={styles.btn_finalizar} onPress={()=> navigation.navigate("Moneda")}>
                         <Text style={styles.txtbtn_finalizar}>INICIAR</Text>
                     </TouchableOpacity>
                                 

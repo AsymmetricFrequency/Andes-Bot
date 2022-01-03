@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     
 })
 
-export default function LoginScreen() {
+export default function LoginScreen({navigation}) {
 
     const [values, setValues] = useState({
         email: "",
@@ -84,7 +84,7 @@ export default function LoginScreen() {
 
         const { email, pwd } = values
         firebase.auth().signInWithEmailAndPassword(email, pwd)
-        
+            
         
         
             .then(() => {

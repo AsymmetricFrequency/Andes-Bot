@@ -87,7 +87,7 @@ export default function ApiScreen({ navigation}) {
         })
 
         const ref = await firebase.firestore().collection('Usuarios').doc(uid).get(values)
-            console.log(ref.data())
+            
 
             .then(() => {
 

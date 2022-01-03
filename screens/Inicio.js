@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, View, StyleSheet, ImageBackground, TouchableOpacity, RecyclerViewBackedScrollView } from "react-native"
+import { Text, View, StyleSheet, ImageBackground, TouchableOpacity } from "react-native"
 import firebase from 'firebase/app';
 import "firebase/auth";
 

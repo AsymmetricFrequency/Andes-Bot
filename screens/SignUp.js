@@ -72,10 +72,10 @@ export default function SignUpScreen ({ navigation }) {
 
         if (pwd == pwd2) {
             firebase.auth().createUserWithEmailAndPassword(email, pwd)
-           
+            
              
                 .then(() => {
-                    
+                     
                 })
                 
                 .catch((error) => {

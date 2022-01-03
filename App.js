@@ -11,6 +11,7 @@ import HomeScreen from "./screens/Home";
 import ApiScreen from "./screens/Api";
 import PisosScreen from './screens/Pisos';
 import Configuracion_botScreen from "./screens/Configuracion_bot";
+import MonedaScreen from "./screens/Moneda";
 import firebase from 'firebase/app'; 
 import "firebase/firestore";     
 import "firebase/auth";
@@ -59,6 +60,7 @@ function App() {
                         <Stack.Screen name="Api" component={ApiScreen} options={{ headerShown: false }} />
                         <Stack.Screen name="Configuracion_bot" component={Configuracion_botScreen} options={{ headerShown: false }} />
                         <Stack.Screen name = "Pisos" component ={PisosScreen} options={{headerShown:false}}/>  
+                        <Stack.Screen name = "Moneda" component ={MonedaScreen} options={{headerShown:false}}/> 
                     </Stack.Navigator>: 
                     <Stack.Navigator>
                         

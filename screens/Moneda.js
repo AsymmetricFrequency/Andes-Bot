@@ -97,9 +97,9 @@ export default function Moneda({navigation}) {
                         <View style={styles.texCoin} >
                             <TextInput  placeholder='BUSCAR COIN' placeholderTextColor={'white'}/>
                         </View>   
-                        <View style={styles.iconsearch}>
-                            <Icon name="search" size={25} color={"#4D1A70"}   />
-                        </View>
+                        <TouchableOpacity style={styles.iconsearch}>
+                            <Icon name="search" size={25} color={"#4D1A70"} onPress={()=> navigation.navigate("Configuracion_bot")}  />
+                        </TouchableOpacity>
                        
             
                 <Provider>
@@ -114,7 +114,7 @@ export default function Moneda({navigation}) {
                             
                             <Menu.Item onPress={() => navigation.navigate("Configuracion_bot")} title="Configuracion" />
                             <Divider/>
-                            <Menu.Item onPress={() => navigation.navigate("Api")} title="Api" />
+                            <Menu.Item onPress={() => navigation.navigate("Balance")} title="Balance" />
                             <Divider/>
                             <Menu.Item onPress={() => CerrarSesion() } title="Cerrar sesion"  />
                             </Menu>

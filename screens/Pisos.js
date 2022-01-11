@@ -1,8 +1,9 @@
 import React from 'react'
-import { Text, View, StyleSheet, ImageBackground,Image,TouchableOpacity, Switch ,TextInput,ScrollView } from "react-native"
+import { Text, View, StyleSheet, ImageBackground,Image,TouchableOpacity, Switch ,TextInput,ScrollView ,Button } from "react-native"
+import {FontAwesome5} from '@expo/vector-icons';
 import "firebase/auth";
 
-export default function PisosScreen() {
+export default function PisosScreen({navigation}) {
 
 const inputs = Array(parseInt(cant_pisos)).fill()
 
@@ -23,50 +24,80 @@ const styles = StyleSheet.create({
   
     },
 
+    containerConf:{
+
+        flexDirection:"row",
+        marginTop:"18%",
+        alignItems:'center',
+       
+        
+    },
+
+    iconreturn:{
+
+        width:"21%",
+        
+        
+    },
+
+
     txtconf:{
-        top:"8%",
+        width:"68%",
         fontSize: 20, 
-        fontWeight: "700",
+        fontWeight: "bold",
         color: "#4D1A70" ,
    
     },
     titulo:{
         
         flexDirection:'row',
-        marginTop:'30%',
-        marginLeft:"5%",
-        marginRight:"5%"
+        paddingTop:'20%',
+        //paddingLeft:"5%",
+        //paddingRight:"5%",
+        
     },
 
     tituloL:{
         width:"33%",
-        fontSize: 20, 
-        fontWeight: "700",
-        color: "#4D1A70" ,
+      
 
     },
     tituloC:{
         width:"33%",
-        fontSize: 20, 
-        fontWeight: "700",
-        color: "#4D1A70" ,
         alignItems:"center"
     },
 
+    txtPorcentaje:{
+        fontSize: 20, 
+        fontWeight: "bold",
+        color: "#4D1A70" ,
+        
+
+    },
 
     tituloR:{
         width:"33%",
-        fontSize: 20, 
-        fontWeight: "700",
-        color: "#4D1A70" ,
-        alignItems:"center"
+        alignItems:"center"   
 
     },
+
+    txtReplica:{
+        fontSize: 20, 
+        fontWeight: "bold",
+        color: "#4D1A70" ,
+        
+
+
+    },
+
     pisos:{
         flexDirection:"row",
-        marginTop:"10%",
-        marginLeft:"5%",
-        marginRight:"6%"
+        paddingTop:"4%",
+        paddingLeft:"5%",
+        paddingRight:"7%",
+        flex:5,
+        
+        
     },
 
     pisosL:{
@@ -77,6 +108,7 @@ const styles = StyleSheet.create({
     pisosC:{
         
         width:"33%",
+        //height:"110%",
         backgroundColor:"#4D1A70",
         borderRadius: 10,
         marginRight:"1%",
@@ -100,18 +132,25 @@ const styles = StyleSheet.create({
     return (
         <View style={styles.view}>
             <ImageBackground source={require('../Img/fondo_config_bot.png')} style={styles.fondo}>
-                    <Text style={styles.txtconf}>CONFIGURACION PISOS</Text>
-                 
+                    <View >
+                        <View style={styles.containerConf} >
+                            <TouchableOpacity style={styles.iconreturn}>
+                                <FontAwesome5 name="angle-double-left" size={20} color={"#4D1A70"} onPress={()=> navigation.navigate("Configuracion_bot")}  />
+                            </TouchableOpacity>
+                                <Text style={styles.txtconf} >CONFIGURACION PISOS</Text>
+                        </View>
+                        
+                    </View>
                 <View style={styles.titulo}>
-                    <View style={styles.tituloL}>
-                            <Text style={styles.txtconf}></Text>  
+                        <View style={styles.tituloL}>
+                            <Text ></Text>  
                         </View>
                                 
                         <View style={styles.tituloC}>
-                            <Text style={styles.txtconf}>Porcentaje</Text>  
+                            <Text style={styles.txtPorcentaje}>Porcentaje</Text>  
                         </View>                    
                         <View style={styles.tituloR}>
-                            <Text style={styles.txtconf}>Replica</Text> 
+                            <Text style={styles.txtReplica}>Replica</Text> 
                         </View>
                 </View> 
                 <ScrollView>

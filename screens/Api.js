@@ -34,11 +34,12 @@ const styles = StyleSheet.create({
         top:"7%",
         height: 42,
         width: "92%",
-        borderRadius: 20,
+        borderRadius: 10,
         marginTop: 25,
         alignItems: "center",
-        backgroundColor:'#4D1A70',
-        textAlign:"center",
+        borderColor:'#4D1A70',
+        borderWidth: 1,
+        paddingLeft: 6
     },
 
     develop:{ 
@@ -66,7 +67,7 @@ export default function ApiScreen({ navigation}) {
         })
     }
 
-
+    // Funcion para extraer el id predeterminado del usuario registrado
     async function getUid() {
         const user = await firebase.auth().currentUser
         if (user === null){
@@ -76,26 +77,31 @@ export default function ApiScreen({ navigation}) {
         } 
     
     }
-    
+     //Funcion para enviar las llaves a la base de datos 
     async function Keys(){
         
         const  uid = await getUid()
-        console.log(uid);
         const { api_publica, api_secreta } = values
         firebase.firestore().collection('Usuarios').doc(uid).set({
             values
         })
 
-        const ref = await firebase.firestore().collection('Usuarios').doc(uid).get(values)
+        if (values.api_publica != "" && values.api_secreta != "") {
             
-
-            .then(() => {
-
-            })
-            .catch((error) => {
-                alert(error.message)
-              
-            });
+            const ref = await firebase.firestore().collection('Usuarios').doc(uid).get(values)
+            navigation.navigate("Configuracion_bot")
+        
+                .then(() => {
+                     
+                })
+                
+                .catch((error) => {
+                    alert(error.message)
+                    // ..
+                });
+        } else {
+            alert("Porfavor ingrese la llaves ")
+        }
      
 
     }
@@ -106,10 +112,10 @@ export default function ApiScreen({ navigation}) {
 
         <ImageBackground source={require('../Img/fondo_keys.png')} style={styles.fondo}>
 
-            <TextInput style={styles.textbox_keys} color ="#FFF" placeholder="INGRESE API PUBLICA" placeholderTextColor="#FFF" onChangeText={text => handleChange(text, "api_publica")} />
-            <TextInput style={styles.textbox_keys } color ="#FFF"  placeholder="INGRESE API SECRETA" placeholderTextColor="#FFF" onChangeText={text => handleChange(text, "api_secreta")}  />
+            <TextInput style={styles.textbox_keys} color ="black" placeholder="INGRESE API PUBLICA" placeholderTextColor="rgba(0, 0, 0, 0.28)" onChangeText={text => handleChange(text, "api_publica")} />
+            <TextInput style={styles.textbox_keys } color ="black"  placeholder="INGRESE API SECRETA" placeholderTextColor="rgba(0, 0, 0, 0.28)" onChangeText={text => handleChange(text, "api_secreta")}  />
             <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center", width: "92%", }}>
-                <Btn onClick={() => Keys() + navigation.navigate("Configuracion_bot")} title="INICIAR" style={{ width: "50%",backgroundColor: "#FBBA00",top:"25%",fontSize: 30 }} />    
+                <Btn onClick={() => Keys() } title="INICIAR" style={{ width: "50%",backgroundColor: "#FBBA00",top:"25%",fontSize: 30 }} />    
             </View>
 
             <View style={styles.develop}>

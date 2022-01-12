@@ -75,35 +75,36 @@ const styles = StyleSheet.create({
     contenidoR1:{
         width:'50%',
         borderRadius: 10,
-        alignItems:"center",
         right: '15%',
         color:'white',
         paddingTop:'1%',
         paddingBottom:'1%',
         paddingLeft:'2%',
-        paddingRight:'2%'
+        paddingRight:'2%',
+        borderWidth: 1,
+
     },
     contenidoR2:{
         width:'50%',
         borderRadius: 10,
-        alignItems:"center",
         right: '15%',
         color:'white',
         paddingTop:'1%',
         paddingBottom:'1%',
         paddingLeft:'2%',
-        paddingRight:'2%'
+        paddingRight:'2%',
+        borderWidth: 1,
     },
     contenidoR3:{
         width:'50%',
         borderRadius: 10,
-        alignItems:"center",
         right: '15%',
         color:'white',
         paddingTop:'1%',
         paddingBottom:'1%',
         paddingLeft:'2%',
-        paddingRight:'2%'
+        paddingRight:'2%',
+        borderWidth: 1,
     },
 
     Inputcantidad:{
@@ -162,9 +163,8 @@ const styles = StyleSheet.create({
     const [isEnabled, setIsEnabled ] = useState(false);
     const toggleSwitch = () =>{ setIsEnabled(!isEnabled);}
      
-    const [datos, setPisos] = useState({
-        cant_pisos: ''
-    })  
+    const [datos, setPisos] = useState({cant_pisos :""})
+    
 
     function handleInputChange(text, event) {
         setPisos(prev => {
@@ -176,8 +176,15 @@ const styles = StyleSheet.create({
     }
     
     const enviarDatos = () => {
-        cant_pisos = datos.cant_pisos
-        navigation.navigate("Pisos",cant_pisos)   
+      
+        if (datos.cant_pisos != "" ) {
+            cant_pisos1 = datos.cant_pisos
+            navigation.navigate("Pisos",cant_pisos1) 
+           
+            
+        } else {
+            alert("Porfavor digite la cantidad de pisos ")
+        }
     }
 
     return (
@@ -208,11 +215,11 @@ const styles = StyleSheet.create({
                     <View style={styles.contenidoL}>
                         <Text style={styles.textcantidad}>CANTIDAD</Text> 
                     </View >
-                    <View style={[styles.contenidoR1 ,{ backgroundColor:isEnabled?"rgba(77, 26, 112, 0.3)" : "#4D1A70" } ]}   >
+                    <View style={[styles.contenidoR1 ,{ borderColor:isEnabled?"rgba(77, 26, 112, 0.3)" : "#4D1A70" } ]}   >
                         <TextInput 
-                            color="white" 
-                            placeholder={isEnabled?"" :"$ $ $"} 
-                            placeholderTextColor="#fff" 
+                            color="black" 
+                            placeholder={isEnabled?"" :" $"} 
+                            placeholderTextColor="rgba(0, 0, 0, 0.28)" 
                             editable={!isEnabled} 
                             keyboardType="numeric"
                         />
@@ -224,10 +231,11 @@ const styles = StyleSheet.create({
                     <View style={styles.contenidoL}>
                         <Text style={styles.textcantidad}>PROFIT</Text> 
                     </View>
-                    <View style={[styles.contenidoR2 , { backgroundColor:isEnabled?"rgba(77, 26, 112, 0.3)" : "#4D1A70" }]}>
+                    <View style={[styles.contenidoR2 , { borderColor:isEnabled?"rgba(77, 26, 112, 0.3)" : "#4D1A70" }]}>
                         <TextInput  
-                            color="white" placeholder={isEnabled? "":"% % %"} 
-                            placeholderTextColor="#fff" 
+                            color="black" 
+                            placeholder={isEnabled? "":" %"} 
+                            placeholderTextColor="rgba(0, 0, 0, 0.28)" 
                             editable={!isEnabled} 
                             keyboardType="numeric"
                         />
@@ -239,11 +247,11 @@ const styles = StyleSheet.create({
                     <View style={styles.contenidoL}>
                         <Text style={styles.textcantidad}>PISOS</Text> 
                     </View>
-                    <View style={[styles.contenidoR3 ,{ backgroundColor:isEnabled?"rgba(77, 26, 112, 0.3)" : "#4D1A70" }]}>
+                    <View style={[styles.contenidoR3 ,{ borderColor:isEnabled?"rgba(77, 26, 112, 0.3)" : "#4D1A70" }]}>
                         <TextInput 
-                            color="white"
-                            placeholder={isEnabled? "":"# # #"} 
-                            placeholderTextColor="#fff" 
+                            color="black"
+                            placeholder={isEnabled? "":" #"} 
+                            placeholderTextColor="rgba(0, 0, 0, 0.28)"  
                             editable={!isEnabled} 
                             keyboardType="numeric" 
                             onChangeText={text => handleInputChange(text, "cant_pisos")}

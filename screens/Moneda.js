@@ -51,20 +51,22 @@ export default function Moneda({navigation}) {
         },
         texCoin:{
             
-            width:"65%",
+            width:"64%",
             height:"30%",
             borderRadius: 25,
-            backgroundColor:"#4D1A70",
-            alignItems:"center",
+            borderColor:"#4D1A70",
+            paddingLeft: 8,
             justifyContent:"center",
-            textAlign:"center",
+            alignContent:"center",
+            borderWidth: 1,
+            marginLeft:6,
             
            
         },
 
         iconsearch:{
 
-            width : "25%",
+            width : "22%",
             alignItems:"center",
             paddingRight:"10%",
             alignItems:"center",
@@ -95,7 +97,7 @@ export default function Moneda({navigation}) {
             <ImageBackground source={require('../Img/fondo_config_bot.png')} style={styles.fondo}>
             <View style = {styles.IntroMoneda}>
                         <View style={styles.texCoin} >
-                            <TextInput  placeholder='BUSCAR COIN' placeholderTextColor={'white'}/>
+                            <TextInput  placeholder='BUSCAR COIN' placeholderTextColor={"rgba(0, 0, 0, 0.28)"}/>
                         </View>   
                         <TouchableOpacity style={styles.iconsearch}>
                             <Icon name="search" size={25} color={"#4D1A70"} onPress={()=> navigation.navigate("Configuracion_bot")}  />
@@ -116,7 +118,7 @@ export default function Moneda({navigation}) {
                             <Divider/>
                             <Menu.Item onPress={() => navigation.navigate("Balance")} title="Balance" />
                             <Divider/>
-                            <Menu.Item onPress={() => CerrarSesion() } title="Cerrar sesion"  />
+                            <Menu.Item onPress={() => CerrarSesion() } title="Cerrar sesion" />
                             </Menu>
                         </View>
                     </Provider>

@@ -5,7 +5,7 @@ import "firebase/auth";
 
 export default function PisosScreen({navigation}) {
 
-const inputs = Array(parseInt(cant_pisos)).fill()
+const inputs = Array(parseInt(cant_pisos1)).fill()
 
 const styles = StyleSheet.create({
 
@@ -109,20 +109,23 @@ const styles = StyleSheet.create({
         
         width:"33%",
         //height:"110%",
-        backgroundColor:"#4D1A70",
+        borderColor:"#4D1A70",
         borderRadius: 10,
         marginRight:"1%",
         marginLeft:"1%",
-        alignItems:'center',
+        borderWidth: 1,
+        paddingLeft: 6
+        
         
     },
     pisosR:{
         marginLeft:"1%",
         marginRight:"1%",
         width:"33%",
-        backgroundColor:"#4D1A70",
+        borderColor:"#4D1A70",
         borderRadius: 10,
-        alignItems:'center'
+        borderWidth: 1,
+        paddingLeft: 6
 
     }
 
@@ -161,10 +164,10 @@ const styles = StyleSheet.create({
                                                     <Text style={styles.txtconf}>Piso {index +1}</Text> 
                                                 </View>
                                                 <View style={styles.pisosC}>
-                                                    <TextInput  color="white" placeholder = "% % %" placeholderTextColor="#fff"  keyboardType="numeric" />
+                                                    <TextInput  color="black" placeholder = " % " placeholderTextColor="rgba(0, 0, 0, 0.28)"  keyboardType="numeric" />
                                                 </View>
                                                 <View style={styles.pisosR}>
-                                                    <TextInput  color="white" placeholder = "# # #" placeholderTextColor="#fff"  keyboardType="numeric" />
+                                                    <TextInput  color="black" placeholder = " #" placeholderTextColor="rgba(0, 0, 0, 0.28)"  keyboardType="numeric" />
                                                 </View>
                         
                                         </View>

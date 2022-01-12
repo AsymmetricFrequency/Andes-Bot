@@ -71,6 +71,7 @@ export default function SignUpScreen ({ navigation }) {
         const { email, pwd, pwd2 } = values
 
         if (pwd == pwd2) {
+            
             firebase.auth().createUserWithEmailAndPassword(email, pwd)
             
              

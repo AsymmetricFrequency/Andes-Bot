@@ -90,7 +90,7 @@ export default function ApiScreen({ navigation}) {
             
             const ref = await firebase.firestore().collection('Usuarios').doc(uid).get(values)
             navigation.navigate("Configuracion_bot")
-        
+            
                 .then(() => {
                      
                 })
@@ -100,7 +100,7 @@ export default function ApiScreen({ navigation}) {
                     // ..
                 });
         } else {
-            alert("Porfavor ingrese la llaves ")
+            alert("Porfavor ingrese las llaves ")
         }
      
 
@@ -113,13 +113,13 @@ export default function ApiScreen({ navigation}) {
         <ImageBackground source={require('../Img/fondo_keys.png')} style={styles.fondo}>
 
             <TextInput style={styles.textbox_keys} color ="black" placeholder="INGRESE API PUBLICA" placeholderTextColor="rgba(0, 0, 0, 0.28)" onChangeText={text => handleChange(text, "api_publica")} />
-            <TextInput style={styles.textbox_keys } color ="black"  placeholder="INGRESE API SECRETA" placeholderTextColor="rgba(0, 0, 0, 0.28)" onChangeText={text => handleChange(text, "api_secreta")}  />
+            <TextInput style={styles.textbox_keys } color ="black"  placeholder="INGRESE API SECRETA" placeholderTextColor="rgba(0, 0, 0, 0.28)" onChangeText={text => handleChange(text, "api_secreta")} />
             <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center", width: "92%", }}>
                 <Btn onClick={() => Keys() } title="INICIAR" style={{ width: "50%",backgroundColor: "#FBBA00",top:"25%",fontSize: 30 }} />    
             </View>
 
             <View style={styles.develop}>
-                <Text style={{color:"#FBBA00",fontSize: 10,fontWeight: "700",}}>DEVELOPED BY CONDOR COIN</Text>
+                <Text style={{color:"#FBBA00",fontSize: 10,fontWeight: "700",}}>DEVELOPED BY CONDOR LAB</Text>
             </View>
 
 

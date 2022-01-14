@@ -124,7 +124,7 @@ export default function LoginScreen({navigation}) {
                 <Text></Text>
             </View>
             <View style={styles.develop}>
-                <Text style={{color:"#FBBA00",fontSize: 10,fontWeight: "700",}}>DEVELOPED BY CONDOR COIN</Text>
+                <Text style={{color:"#FBBA00",fontSize: 10,fontWeight: "700",}}>DEVELOPED BY CONDOR LAB</Text>
             </View>
 
 

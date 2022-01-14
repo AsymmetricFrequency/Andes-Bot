@@ -37,7 +37,11 @@ export default function Moneda({navigation}) {
                 firebase.auth().signOut() 
                 navigation.navigate("Inicio")   
                 }
-      
+
+         const Operar = () => {
+            
+            navigation.navigate("Configuracion_bot")   
+                    }
     
 
   
@@ -180,7 +184,7 @@ export default function Moneda({navigation}) {
                             style={styles.menuNav }>
                             <Menu
                             
-                            //visible={visible}
+                            visible={visible}
                             onDismiss={closeMenu}
                             anchor={<Button onPress={openMenu}>
                                         <FontAwesome5 name="bars" size={20} color="#4D1A70"  />
@@ -213,7 +217,7 @@ export default function Moneda({navigation}) {
                                     <Text style={styles.txtMoneda}>{item["symbol"]}</Text> 
                                     <Text style={styles.txtPrecio}>{item["price"]}</Text>
 
-                                    <TouchableOpacity style={styles.ContainerOperar}>
+                                    <TouchableOpacity style={styles.ContainerOperar} onPress={() => Operar() }>
                                         <Text style={styles.textOperar} >Operar</Text>
                                     </TouchableOpacity>
 

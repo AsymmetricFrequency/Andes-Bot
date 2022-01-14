@@ -203,7 +203,6 @@ const styles = StyleSheet.create({
                             style={styles.btn_switch}
                             trackColor={{ false: "#767577", true: "#4D1A70" }}
                             thumbColor={isEnabled ? "#FBBA00" : "#FBBA00"}
-                            ios_backgroundColor="#3e3e3e"
                             onValueChange={toggleSwitch}
                             value={isEnabled}
                         />

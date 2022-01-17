@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, View, StyleSheet, ImageBackground, TouchableOpacity } from "react-native"
+import { Text, View, StyleSheet, ImageBackground, TouchableOpacity, Image } from "react-native"
 import firebase from 'firebase/app';
 import "firebase/auth";
 
@@ -19,18 +19,28 @@ const styles = StyleSheet.create({
         alignItems:'center',     
     },
     btn1:{
-        marginTop:'180%',
+        marginTop:'173%',
         
     },
     txtbtn1:{
         color:'#FBBA00',
-        fontSize: 18,
+        fontSize: 15,
         fontWeight:'bold'
     },
     btn2:{
         fontWeight: "bold",
         color:'#FBBA00',
         marginTop:'3%'
+    },
+    Imagenlogo:{
+        resizeMode:'contain',
+        width:180,
+        height:120
+    },
+    logo :{
+        alignItems:"center",
+        top:'68%',
+        marginBottom:'-20%'
     }
 })
 
@@ -43,6 +53,9 @@ export default function InicioScreen({navigation}) {
                 source={require('../Img/fondo_inicio.png')} 
                 style={styles.fondo}
             >
+            <View style={styles.logo}>
+                <Image style={styles.Imagenlogo} source={require('../Img/logo_condor2.png')}/>
+            </View>
             <TouchableOpacity style={styles.btn1} onPress={() => navigation.navigate("Login")}>
                 <Text style={styles.txtbtn1}>INICIAR SESION</Text>
             </TouchableOpacity>

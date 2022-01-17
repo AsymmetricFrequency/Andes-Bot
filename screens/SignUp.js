@@ -80,9 +80,16 @@ export default function SignUpScreen ({ navigation }) {
                 })
                 
                 .catch((error) => {
-                    alert(error.message)
-                    // ..
+                    console.log(error.message);
+                    alert("Formato correo vacio o invalido")
+                   
                 });
+         
+        
+        if (pwd === "" ) {
+            alert("Porfavor ingrese una contraseña")
+        }
+
         } else {
             alert("Las contraseñas no coinciden!")
         }

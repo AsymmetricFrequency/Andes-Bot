@@ -193,11 +193,11 @@ export default function Moneda({navigation}) {
                             <Menu.Item onPress={() => navigation.navigate("Configuracion_bot")} title="Configuracion"  />
                          
                             <Divider/>
+                            <Menu.Item onPress={() => CerrarSesion() } title="Cerrar sesion"  />
                             
-                            <Menu.Item onPress={() => navigation.navigate("Balance")} title="Balance"  />
                            
                             <Divider/>
-                            <Menu.Item onPress={() => CerrarSesion() } title="Cerrar sesion"  />
+                            <Menu.Item onPress={() => navigation.navigate("Balance")} title="Balance"  />
                             </Menu>
                         </View>
                     </Provider>

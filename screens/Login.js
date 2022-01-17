@@ -6,6 +6,7 @@ import "firebase/auth";
 import "firebase/firestore";
 
 
+
 const styles = StyleSheet.create({
     view: {
         flex: 1,
@@ -80,20 +81,63 @@ export default function LoginScreen({navigation}) {
         })
     }
 
+
+
+    function validadorCorreo (correo){
+
+        const expReg =  /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/
+        const esValido = expReg.test(correo)
+
+        return esValido 
+    
+    }
+    //     if (esValido == true){
+            
+    //     }
+    //     else{
+    //         alert("Formato correo invalido")
+    //     }
+
+
+
+    // }
+
     function Login() {
 
+        
         const { email, pwd } = values
-        firebase.auth().signInWithEmailAndPassword(email, pwd)
-            
-        
-        
-            .then(() => {
 
+
+        if( email === ""  ){
+            alert("Porfavor escriba su correo")
+        }
+        if( pwd === ""  ){
+            alert("Porfavor escriba su contraseña")
+        }
+
+        if (validadorCorreo(email) == true){
+            firebase.auth().signInWithEmailAndPassword(email, pwd) 
+
+
+            .then(() => {
+                     
             })
+            
             .catch((error) => {
-                alert(error.message)
+                console.log(error.message)
+                //alert("contraseña o correo invalida ")
                 // ..
             });
+        }
+
+      
+
+
+        else{
+            alert("Formato correo invalido o vacio")
+        }
+            
+           
     }
 
     
@@ -133,3 +177,4 @@ export default function LoginScreen({navigation}) {
             
     </View>
 }
+

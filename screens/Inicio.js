@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+//Pantalla Inicio
+
+//Importaciones
+import React from 'react'
 import { Text, View, StyleSheet, ImageBackground, TouchableOpacity, Image } from "react-native"
-import firebase from 'firebase/app';
 import "firebase/auth";
 
 
@@ -45,25 +47,30 @@ const styles = StyleSheet.create({
 })
 
 
-//front inicio de app
+//Funcion Princial inicio de app
 export default function InicioScreen({navigation}) {
+    
+    //Front
     return (
         <View  style={styles.view}>
             <ImageBackground 
                 source={require('../Img/fondo_inicio.png')} 
                 style={styles.fondo}
             >
-            <View style={styles.logo}>
-                <Image style={styles.Imagenlogo} source={require('../Img/logo_condor2.png')}/>
-            </View>
-            <TouchableOpacity style={styles.btn1} onPress={() => navigation.navigate("Login")}>
-                <Text style={styles.txtbtn1}>INICIAR SESION</Text>
-            </TouchableOpacity>
+                <View style={styles.logo}>
+                    <Image style={styles.Imagenlogo} source={require('../Img/logo_condor2.png')}/>
+                </View>
+                <TouchableOpacity style={styles.btn1} onPress={() => navigation.navigate("Login")}>
+                    <Text style={styles.txtbtn1}>
+                        INICIAR SESION
+                    </Text>
+                </TouchableOpacity>
 
-            <TouchableOpacity style={styles.btn2} onPress={() => navigation.navigate("Sign Up")}>
-                <Text style={styles.txtbtn1}>REGISTRATE AHORA</Text>
-            </TouchableOpacity>
-
+                <TouchableOpacity style={styles.btn2} onPress={() => navigation.navigate("Sign Up")}>
+                    <Text style={styles.txtbtn1}>
+                        REGISTRATE AHORA
+                    </Text>
+                </TouchableOpacity>
             </ImageBackground>
         </View>
     )

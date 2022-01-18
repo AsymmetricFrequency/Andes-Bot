@@ -100,11 +100,21 @@ export default function LoginScreen() {
     function Login() {
 
         const { email, pwd } = values
-        firebase.auth().signInWithEmailAndPassword(email, pwd)
 
-        .catch((error) => {
-            alert(error.message)
-        });
+        if( email === ""  ){
+            alert("Porfavor escriba su correo")
+        }
+        if( pwd === ""  ){
+            alert("Porfavor escriba su contraseña")
+        }
+
+        if (validadorCorreo(email) == true){
+            firebase.auth().signInWithEmailAndPassword(email, pwd) 
+            
+            .catch((error) => {
+                console.log(error.message)
+            });
+        }
     }
 
     //Front

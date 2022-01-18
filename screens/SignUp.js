@@ -93,11 +93,19 @@ export default function SignUpScreen ({ navigation }) {
         if (pwd == pwd2) {
             
             firebase.auth().createUserWithEmailAndPassword(email, pwd)
-            navigation.navigate('Login')
-            
+                
             .catch((error) => {
-                alert(error.message)
+                console.log(error.message);
+                alert("Formato correo vacio o invalido")
+                   
             });
+         
+            if (email === "" ) {
+                alert("Porfavor ingrese un correo")
+            }
+            if (pwd === "" ) {
+                alert("Porfavor ingrese una contraseña")
+            }
         } 
         else {
             alert("Las contraseñas no coinciden!")

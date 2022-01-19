@@ -12,6 +12,13 @@ api_secreta = ""
 #conexion con api
 clientn = Client(tld='com')
 
+#ruta para obtener moneda 
+@app.route('/obtener_moneda', methods = ['POST'])
+def obtener_moneda(): 
+  moneda = request.json['moneda']
+  print(moneda)
+  return moneda
+
 #ruta de la api 
 @app.route('/obtener_apis', methods = ['POST'])
 def obtener_apis():
@@ -45,4 +52,4 @@ def monedas():
 
 if __name__ == '__main__' :
     
-    app.run(host= '10.10.18.13', port=4000, debug=True)
+    app.run(host= '10.10.18.14', port=4000, debug=True)

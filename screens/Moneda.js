@@ -146,9 +146,18 @@ export default function Moneda({navigation}) {
     }
 
     //Funcion Operar
-    const Operar = () => {            
+    const Operar = (num) => {
+        fetch('http://10.10.18.14:4000/obtener_moneda', {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify({moneda:data.monedas[num].symbol})
+        })
+        .then(resp => resp.json())
+        .catch(error => console.log(error))         
         navigation.navigate("Configuracion_bot")   
-    }
+        }
     
     //Front
     return (
@@ -196,12 +205,12 @@ export default function Moneda({navigation}) {
                         {(typeof data.monedas ==="undefined")?(
                             <Text >Loading....</Text>
                         ) :(
-                            data.monedas.map(item =>(
+                            data.monedas.map((item,index) =>(
                                 <View style={styles.lista} >      
                                     <Text style={styles.txtMoneda}>{item["symbol"]}</Text> 
                                     <Text style={styles.txtPrecio}>{item["price"]}</Text>
 
-                                    <TouchableOpacity style={styles.ContainerOperar} onPress={() => Operar() }>
+                                    <TouchableOpacity style={styles.ContainerOperar} onPress={() => Operar(index) }>
                                         <Text style={styles.textOperar} >Operar</Text>
                                     </TouchableOpacity>        
                                 </View>

@@ -96,6 +96,15 @@ export default function LoginScreen() {
         })
     }
 
+    // funcion para validar si el correo tiene un formtao correcto
+    function validadorCorreo(correo){
+     
+        const expReg= /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+        const esValido = expReg.test(correo)     
+        return esValido
+
+    }
+
     //Funcion de logeo
     function Login() {
 
@@ -112,8 +121,12 @@ export default function LoginScreen() {
             firebase.auth().signInWithEmailAndPassword(email, pwd) 
             
             .catch((error) => {
-                console.log(error.message)
+            console.log(error.message)
             });
+        }
+        else {
+
+            alert("Formato de correo no valido ")
         }
     }
 

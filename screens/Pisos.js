@@ -1,10 +1,12 @@
 //Pantalla Pisos
 
 //Importaciones
-import React from 'react'
+import React ,{ useState } from 'react'
 import { Text, View, StyleSheet, ImageBackground,TouchableOpacity ,TextInput,ScrollView } from "react-native"
 import {FontAwesome5} from '@expo/vector-icons';
 import "firebase/auth";
+
+
 
 //Estilos
 const styles = StyleSheet.create({
@@ -100,14 +102,64 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         borderWidth: 1,
         paddingLeft: 6
+    },
+
+    btn_finalizar:{
+        width:120,
+        height:45,
+        backgroundColor: "#4D1A70",
+        borderRadius: 15,
+        marginTop:'8%',
+        alignItems:"center",
+        justifyContent:"center",
+        alignSelf:"center"
+    },
+
+    txtbtn_finalizar:{
+        color:'#FBBA00',
+        fontSize: 20,
+        fontWeight:'bold'
     }
 })
+
+
+
 
 //Funcion Principal Pisos
 export default function PisosScreen({navigation}) {
 
-    //Recibe Pisos y crea Array
+    const [values, setValues] = useState({
+        porcentaje: "",
+        replica: ""
+    }) 
+
+     //Recibe Pisos y crea Array
     const inputs = Array(parseInt(cant_pisos1)).fill()
+
+      //Esta funcion actualiza y toma lo que esta en la caja de texto
+      function handleChange(text, eventName) {
+        setValues(prev => {
+            return {
+                ...prev,
+                [eventName]: text
+            }
+        })
+    }
+
+    const Enviar = () =>{
+    
+        fetch('http://10.10.18.14:4000/obtiene_pisos', {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify({porcentaje:values.porcentaje, replica:values.replica})
+        })
+        .then(resp => resp.json())
+        .catch(error => console.log(error))
+    }
+    
+   
 
     //Front
     return (
@@ -144,14 +196,23 @@ export default function PisosScreen({navigation}) {
                                         <View key={index.toString()} style={styles.pisosL}>
                                             <Text style={styles.txtconf}>Piso {index +1}</Text> 
                                         </View>
-                                        <View style={styles.pisosC}>
-                                            <TextInput  color="black" placeholder = " % " placeholderTextColor="rgba(0, 0, 0, 0.28)"  keyboardType="numeric" />
+                                        <View key={index.toString()} style={styles.pisosC}>
+                                            <TextInput  color="black" placeholder = " % " placeholderTextColor="rgba(0, 0, 0, 0.28)"  keyboardType="numeric" onChangeText={text => handleChange(text, "porcentaje"+index)}   />
                                         </View>
-                                        <View style={styles.pisosR}>
-                                            <TextInput  color="black" placeholder = " #" placeholderTextColor="rgba(0, 0, 0, 0.28)"  keyboardType="numeric" />
+                                        <View key={index.toString()} style={styles.pisosR}>
+                                            <TextInput  color="black" placeholder = " #" placeholderTextColor="rgba(0, 0, 0, 0.28)"  keyboardType="numeric" onChangeText={text => handleChange(text, "replica"+index)}   />
                                         </View>
+
                                     </View>
                                     } )}
+
+                                    <View>
+                                        <TouchableOpacity style={styles.btn_finalizar}  onPress={() => Enviar()}>
+                                            <Text  style={styles.txtbtn_finalizar}>
+                                                Enviar
+                                            </Text>
+                                        </TouchableOpacity>
+                                    </View>
                         
                     </View>     
                 </ScrollView>                      

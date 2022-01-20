@@ -32,6 +32,18 @@ def obtener_apis():
   print(api_secreta, api_publica)
   return api_publica, api_secreta
 
+#ruta pisos
+@app.route('/obtiene_pisos', methods = ['POST'])
+def obtiene_pisos():
+
+  porcentaje = []
+  replica = []
+  for i in range(0,1):
+    porcentaje.append(request.json['porcentaje'+i])
+    replica.append(request.json['replica'+i])
+
+  print(porcentaje, replica)
+  return porcentaje, replica
 
 
 @app.route('/monedas')
